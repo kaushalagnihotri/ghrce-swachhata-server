@@ -1,0 +1,27 @@
+header
+    .navbar-fixed
+        nav.white
+            .nav-wrapper
+                .container
+                    a.grey-text.text-darken-4.sidenav-trigger.hide-on-large-only(href="#", data-target="nav-mobile", onclick="sidenavinstance.open()")
+                        i.material-icons.button-collapse menu
+
+                    a.brand-logo.black-text(href="/dashboard") Indafa
+                   
+                    ul#nav-mobile.right.hide-on-med-and-down
+                        li
+                            a.grey-text.text-darken-4(href="/dashboard") Home
+                        li
+                            a.grey-text.text-darken-4(href="/about") About
+                        li
+                            a.grey-text.text-darken-4(href="/contact") Contact
+
+    ul#nav-mobile.sidenav
+        li
+            a(href="/dashboard") Home
+        li
+            a(href="/about") About
+        li
+            a(href="/contact") Contact
+
+    //- script(src="/js/menu.js")

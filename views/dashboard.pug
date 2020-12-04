@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title  Dashboard
+        include ./head.pug
+    body
+        
+        include ./menu.pug
+        
+
+        main
+            .container
+                h2.center Dashboard
+
+                .row
+                    .col.s9
+                        .collection
+                            each complaint in complaints
+                                div.collection-item
+                                    if !complaint.status
+                                        a(href='javascript:viewcomplaint("'+complaint._id+'")') Location: #{complaint.location}                                    
+                                    else
+                                        a.grey-text(href='javascript:viewcomplaint("'+complaint._id+'")') Location: #{complaint.location}                                    
+
+                                    
+                                    .right
+                                        if !complaint.status
+                                            a.waves.waves-green(href='javascript:updatecomplaint("'+complaint._id+'")')
+                                                i.material-icons.green-text done
+                                        a.waves.waves-red(href='javascript:deletecomplaint("'+complaint._id+'")')
+                                            i.material-icons.red-text close
+                                
+                            else
+                                p.center
+                                    a(href='/complaints/all') No new complaints. Click here to go to archives.
+                        
+                    .col.s3
+                        include ./adminmenu.pug
+                        
+            
+        
+
+            #complaint-modal.modal
+                .modal-content
+                    .row
+                        img.col.s12.m6.push-m3.materialboxed.light#complaint-img(alt="image")
+
+                    .row
+                        h4.light.col.s8#complaint-location
+                        .col.s4.grey-text#complaint-date
+
+                    .row
+                        blockquote.col.s12.light#complaint-description         
+
+
+
+    
+        include ./footer.pug
+        
+        script(src='/js/dashboard.js')
+        
